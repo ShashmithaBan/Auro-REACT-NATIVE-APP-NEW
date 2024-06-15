@@ -2,6 +2,7 @@
   "expo": {
     "name": "auro",
     "slug": "auro",
+     "scheme": "auro",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
