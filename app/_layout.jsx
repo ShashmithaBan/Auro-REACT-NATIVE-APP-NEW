@@ -28,12 +28,12 @@ if(fontsLoaded) SplashScreen.hideAsync();//splashscreen is like a preload animat
 if(!fontsLoaded &&!error) return null;
 
   return (
+
    <Stack>
     <Stack.Screen name='index' options={{headerShown:false}}/>
    </Stack>
+
   )
 }
 
 export default RootLayout;
-
-const styles = StyleSheet.create({})
