@@ -1,6 +1,6 @@
 import {  Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Link } from 'expo-router'
+import { Redirect , router } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import {images} from '../constants'
@@ -15,7 +15,7 @@ const index = () => {
       {/* sometimes the content might be larger than the small devices . so it might be scroll down */}
       <ScrollView contentContainerStyle = {{height:'100%'}}>
 
-       <View className="w-full  px-4 h-full items-center">
+       <View className="w-full  px-4 h-full items-center justify-center">
           <Image className = " w-[130px] h-[80px]"
           source = {images.logo}
           resizeMode='contain'
@@ -43,7 +43,7 @@ const index = () => {
           </Text>
           <CustomButtons
           title = 'Continue with Email'
-          handlePress = {()=>{}}
+          handlePress = {()=>{router.push('/sign-in')}}
           containerStyles = "w-full mt-7 "
           />
        </View>
