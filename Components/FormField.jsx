@@ -17,9 +17,9 @@ const FormField = ({title , value ,handleChangeText, otherStyles , keyboardType 
         placeholder={placeholder}
         placeholderTextColor='gray'
         onChangeText={handleChangeText}
-        secureTextEntry={title === 'Password' && !showPassword}
+        secureTextEntry={placeholder === 'Password' && !showPassword}
       />
-      {title === 'Password' && (
+      {placeholder === 'Password' && (
         <TouchableOpacity onPress={()=>setShowPassword(!showPassword)}>
                     <Image
                     className='w-6 h-6 flex my-auto'

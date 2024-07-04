@@ -28,6 +28,7 @@ const SignIn = () => {
           <FormField
           title='Email'
           value= {form.email}
+          placeholder='Email'
           handleChangeText = {(e)=>setForm({...form , email:e})
           }
           otherStyles = "mt-7"
@@ -38,6 +39,7 @@ const SignIn = () => {
           value= {form.passwword}
           handleChangeText = {(e)=>setForm({...form , passwword:e})
           }
+          placeholder='Password'
           otherStyles = "mt-7" 
           />
           <CustomButtons
@@ -47,7 +49,7 @@ const SignIn = () => {
           />
           <View className='justify-center flex-row gap-3 mt-3  '>
             <Text className ='text-white'>
-              Don't have and acoount?
+              Don't have an acoount?
             </Text>
             <Link href='/sign-up' className='font-psemibold text-secondary-100'>Sign Up</Link>
           </View>
