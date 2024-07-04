@@ -11,7 +11,7 @@ import { StatusBar } from 'expo-status-bar'
 const index = () => {
   return (//most outer view should for different devices so we used safeareaview
     <SafeAreaView className = 'bg-primary h-full'>
-<StatusBar backgroundColor='#161622' style='light'/> 
+
       {/* sometimes the content might be larger than the small devices . so it might be scroll down */}
       <ScrollView contentContainerStyle = {{height:'100%'}}>
 

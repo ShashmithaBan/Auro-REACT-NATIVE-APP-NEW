@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import  { useEffect } from 'react'
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
 SplashScreen.preventAutoHideAsync();// this prevent autohiding befor the assests load
 
@@ -28,10 +29,17 @@ if(fontsLoaded) SplashScreen.hideAsync();//splashscreen is like a preload animat
 if(!fontsLoaded &&!error) return null;
 
   return (
-
-   <Stack>
+<>
+<Stack>
     <Stack.Screen name='index' options={{headerShown:false}}/>
+    <Stack.Screen name='(auth)' options={{headerShown:false}}/>
+    <Stack.Screen name='(tabs)' options={{headerShown:false}}/>
+    <Stack.Screen name='/search/[query]' options={{headerShown:false}}/>
+    
    </Stack>
+<StatusBar backgroundColor='#161622' style='light'/> 
+</>
+   
 
   )
 }
