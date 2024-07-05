@@ -6,9 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import {images} from '../constants'
 import CustomButtons from '../Components/CustomButtons'
 import { StatusBar } from 'expo-status-bar'
+import { useGlobalContext } from '../Context/GlobalProvider'
 
 
 const index = () => {
+const {isLoading , isLoggedIn} = useGlobalContext();
+if(!isLoading && isLoggedIn) return <Redirect href='/home'/>
+
   return (//most outer view should for different devices so we used safeareaview
     <SafeAreaView className = 'bg-primary h-full'>
 
