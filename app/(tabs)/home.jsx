@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, ScrollView, FlatList, Image } from 'react-nat
 import React from 'react'
 import {images} from '../../constants'
 import SearchInput from '../../Components/SearchInput'
+import Trending from '../../Components/Trending'
 
 const Home = () => {
   return (
@@ -31,6 +32,14 @@ const Home = () => {
                 </View>
               </View>
               <SearchInput/>
+              <View className='w-full flex-1 pb-8 pt-5'>
+                <Text className='text-gray-100 text-lg font-pregular mb-5'>
+                  Latest Video
+                </Text>
+                <Trending
+                posts={[{id:1},{id:2},{id:3}] ?? []}
+                />
+              </View>
             </View>
           )}
           />
