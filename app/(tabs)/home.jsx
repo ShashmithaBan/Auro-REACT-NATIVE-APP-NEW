@@ -1,18 +1,28 @@
-import { View, Text, SafeAreaView, ScrollView, FlatList, Image } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView, ScrollView, FlatList, Image, RefreshControl } from 'react-native'
+import React, { useState } from 'react'
 import {images} from '../../constants'
 import SearchInput from '../../Components/SearchInput'
 import Trending from '../../Components/Trending'
+import EmptyState from '../../Components/EmptyState'
+
 
 const Home = () => {
+  const [refreshing, setRefreshing] = useState(false)
+
+  onRefresh = async = () =>{
+   setRefreshing(true)
+   //re call videos=>iif any new videos appeared
+   setRefreshing(false)
+  }
   return (
-    <SafeAreaView className='bg-primary'>
-      <ScrollView>
+    <SafeAreaView className='bg-primary  h-full '>
+    {/* i used FlatList becaue ScrollView not give access for to scroll vertical and horizontal at the same time*/}
           <FlatList
           data={[{id:1},{id:2},{id:3}]}
-          // keyExtractor={(item)=>item.$id}
+         
+          keyExtractor={(item)=>item.$id}
           renderItem={({item})=>(
-            <Text className='text-black text-3xl'>
+            <Text className='text-white text-3xl'>
               {item.id}
             </Text>
   )}
@@ -32,8 +42,8 @@ const Home = () => {
                 </View>
               </View>
               <SearchInput/>
-              <View className='w-full flex-1 pb-8 pt-5'>
-                <Text className='text-gray-100 text-lg font-pregular mb-5'>
+              <View className='w-full flex-1  pt-5'>
+                <Text className='text-gray-100 text-lg font-pregular mb-3'>
                   Latest Video
                 </Text>
                 <Trending
@@ -42,8 +52,18 @@ const Home = () => {
               </View>
             </View>
           )}
+          ListEmptyComponent={()=>(
+            <EmptyState
+            title='No Videos Found'
+            subtitle='Be the first one to upload a video'
+            />
+          )}
+          refreshControl={<RefreshControl
+          onRefresh={onRefresh}
+          refreshing={refreshing}
+          />}
           />
-      </ScrollView>
+     
     </SafeAreaView>
   )
 }
