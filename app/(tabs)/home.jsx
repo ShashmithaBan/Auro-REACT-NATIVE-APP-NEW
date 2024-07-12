@@ -1,14 +1,34 @@
-import { View, Text, SafeAreaView, ScrollView, FlatList, Image, RefreshControl } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, SafeAreaView, ScrollView, FlatList, Image, RefreshControl, Alert } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import {images} from '../../constants'
 import SearchInput from '../../Components/SearchInput'
 import Trending from '../../Components/Trending'
 import EmptyState from '../../Components/EmptyState'
+import { getAllPosts } from '../../lib/appwrite'
 
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false)
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
+  useEffect(() => {
+    const fetchData = async () =>{
+      setIsLoading(true);
+      try {
+        const response = await getAllPosts();
+        setData(response)
+      } catch (error) {
+        Alert.alert('error',error.message)
+      }finally{
+        setIsLoading(false)
+      }
+    }
+  
+    fetchData();
+  }, [])
+  
+console.log(data)
   onRefresh = async = () =>{
    setRefreshing(true)
    //re call videos=>iif any new videos appeared
