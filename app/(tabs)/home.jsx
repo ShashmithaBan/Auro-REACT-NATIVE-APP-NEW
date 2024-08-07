@@ -4,13 +4,14 @@ import { images } from '../../constants';
 import SearchInput from '../../Components/SearchInput';
 import Trending from '../../Components/Trending';
 import EmptyState from '../../Components/EmptyState';
-import { getAllPosts } from '../../lib/appwrite';
+import { getAllPosts, getLatestPosts } from '../../lib/appwrite';
 import useAppWrite from '../../lib/useAppWrite';
 import VideoCard from '../../Components/VideoCard';
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const { data: posts, refetch } = useAppWrite(getAllPosts);
+  const { data: latestPosts } = useAppWrite(getLatestPosts);
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -50,7 +51,7 @@ const Home = () => {
               <Text className='text-gray-100 text-lg font-pregular mb-3'>
                 Latest Video
               </Text>
-              <Trending posts={posts ?? []} />
+              <Trending posts={latestPosts ?? []} />
             </View>
           </View>
         )}
